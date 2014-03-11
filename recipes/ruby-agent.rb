@@ -7,9 +7,8 @@
 
 license = get_newrelic_license('application_monitoring')
 
-package 'newrelic_rpm' do
-    provider Chef::Provider::Package::RubyGem
-    action :install
+rbenv_gem "newrelic_rpm" do
+  ruby_version node[:soupstraw][:ruby_version]
 end
 
 if node['newrelic']['application_monitoring']['appname'].nil?
